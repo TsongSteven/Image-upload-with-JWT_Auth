@@ -58,8 +58,10 @@ class LoginController extends AbstractController
        $username = $parameter["username"];
        $password = $parameter["password"];
 
+    //    dd($parameter);
+
        if (empty($username) || empty($password) ){
-           return $this->respondValidationError("Invalid Username or Password");
+           return $this->json("Invalid Username or Password");
        }
        $user = new User();
        $user->setPassword($encoder->hashPassword($user, $password));
